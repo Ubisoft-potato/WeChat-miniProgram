@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/sp")
 public class UserSearchController {
     private UserSearchService userSearchService;
 
