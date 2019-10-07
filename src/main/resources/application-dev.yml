@@ -3,7 +3,7 @@ spring:
     name: PhotoShare-Server
   datasource:
     name: driud
-    url: jdbc:mysql://127.0.0.1:3306/photoshare?useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3307/photoshare?useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -28,7 +28,7 @@ spring:
       enabled: true
   redis:
     host: 127.0.0.1
-    port: 6379
+    port: 6380 #docker redis端口
     timeout: 180
     pool:
       max-active: 8
