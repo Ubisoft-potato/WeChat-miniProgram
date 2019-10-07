@@ -26,6 +26,7 @@
 
     <!-- Add typical dependencies for a web application -->
     <dependencies>
+        <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -111,12 +112,12 @@
             <version>0.4.8</version>
         </dependency>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.bouncycastle</groupId>-->
-<!--            <artifactId>bcprov-jdk15</artifactId>-->
-<!--            <version>1.45</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.bouncycastle</groupId>-->
+        <!--            <artifactId>bcprov-jdk15</artifactId>-->
+        <!--            <version>1.45</version>-->
+        <!--        </dependency>-->
 
 
     </dependencies>
