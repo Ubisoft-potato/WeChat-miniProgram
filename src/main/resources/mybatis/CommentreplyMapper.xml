@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cust.dao.CommentreplyMapper">
+    <insert id="insertSonComment">
+        insert into commentreply (commentid, fromid, fromname, content, createTime, fromURL)
+        values (#{commentid},#{fromid},#{fromname},#{content},#{createtime},#{fromurl})
+    </insert>
+
+    <select id="selectSonComments" resultType="Map">
+        select fromid,fromname,content,createTime,fromURL
+        from commentreply
+        where commentid=#{commnetId}
+        order by id asc
+    </select>
+</mapper>

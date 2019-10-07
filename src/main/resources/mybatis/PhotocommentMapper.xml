@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cust.dao.PhotocommentMapper">
+
+    <select id="selectByPhotoId" resultType="Map">
+        select id,fromid,fromname,fromURL,content,createTime
+        from photocomment
+        where photoId=#{photoId}
+        order by createTime asc
+    </select>
+    <insert id="insertMainComment">
+        insert into photocomment (id,photoId,fromid,fromname,fromURL,content,createTime)
+        VALUES (#{id},#{photoId},#{fromid},#{fromname},#{fromurl},#{content},#{createtime})
+    </insert>
+</mapper>

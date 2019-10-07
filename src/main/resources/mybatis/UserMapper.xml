@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cust.dao.UserMapper">
+    <select id="selectUser" resultType="com.cust.Entity.User">
+         select * from user where openid=#{openid}
+    </select>
+
+    <insert id="insertUserInfo">
+        insert into user (id,nickname,gender,province,city,country,openid,avatarURL)
+        values(#{id},#{nickname},#{gender},#{province},#{city},#{country},#{openid},#{avatarURL})
+    </insert>
+
+    <update id="changeNickName">
+        update user set nickname=#{nickname} where id=#{userid}
+    </update>
+
+</mapper>

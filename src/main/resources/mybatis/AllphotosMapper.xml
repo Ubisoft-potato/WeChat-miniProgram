@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cust.dao.AllphotosMapper">
+
+    <select id="randomSelect" resultType="Map">
+        select
+        allphotos.*,user.avatarURL,user.nickname
+        from allphotos
+        left join user
+        on user.id=allphotos.ownerId
+        order by allphotos.likeNum desc,allphotos.createTime desc
+        LIMIT #{selectRow},14
+    </select>
+    <update id="nextInsert">
+        update allphotos set photoURL=CONCAT(photoURL,#{photoURL}) where photoId=#{photoId}
+    </update>
+    
+    <insert id="firstInsert">
+        insert into allphotos(photoId,ownerId,instruction,location,photoURL,createTime,categories)
+        values(#{photoId},#{ownerId},#{instruction},#{location},#{photoURL},#{createTime},#{categories})
+    </insert>
+    
+    <select id="getPhotoUrlByphotoId" resultType="String">
+        select photoURL from allphotos where photoId=#{photoId}
+    </select>
+
+    <select id="getPicListByUserID" resultType="map">
+        select photoId,instruction,location,photoURL,likeNum,createTime,categories,user.avatarURL,user.nickname
+        from allphotos,user
+         where ownerId=#{userID} and user.id=#{userID} order by allphotos.createTime DESC  LIMIT #{selectRow},6
+    </select>
+
+    <delete id="delPicById">
+        delete from allphotos where photoId=#{photoId}
+    </delete>
+</mapper>
