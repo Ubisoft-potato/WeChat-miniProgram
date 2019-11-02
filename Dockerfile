@@ -1,4 +1,4 @@
-FROM java8
+FROM openjdk:8
 VOLUME /home/wxpicture
 ADD target/photoShare-1.0.0-SNAPSHOT.jar /app/photoShare.jar
 ENV JAVA_OPTS "-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/java_pid%p.hprof -XX:+PrintGCDetails -Djava.security.egd=file:/dev/./urandom"
