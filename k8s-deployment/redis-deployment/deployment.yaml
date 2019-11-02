@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:5.0.6
+          image: redis:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 6379
