@@ -22,7 +22,6 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  replicas: 1
   strategy:
     type: Recreate
   template:
