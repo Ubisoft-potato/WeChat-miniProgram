@@ -29,6 +29,9 @@ spec:
       labels:
         app: mysql
     spec:
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
       containers:
         - image: mysql:5.7
           name: mysql
