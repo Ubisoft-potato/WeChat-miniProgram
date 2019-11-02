@@ -19,6 +19,7 @@ metadata:
   namespace: default
   name: mysql
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
@@ -30,8 +31,10 @@ spec:
         app: mysql
     spec:
       tolerations:
-        - key: node-role.kubernetes.io/master
-          effect: NoSchedule
+        - key: "node-role.kubernetes.io/master"
+          operator: "Equal"
+          value: ""
+          effect: "NoSchedule"
       containers:
         - image: mysql:5.7
           name: mysql
