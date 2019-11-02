@@ -1,4 +1,4 @@
-package com.cust.Utils;
+package com.cust.utils;
 
 
 import java.io.BufferedReader;

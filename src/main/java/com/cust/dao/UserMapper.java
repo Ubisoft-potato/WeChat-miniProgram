@@ -1,6 +1,6 @@
 package com.cust.dao;
 
-import com.cust.Entity.User;
+import com.cust.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;

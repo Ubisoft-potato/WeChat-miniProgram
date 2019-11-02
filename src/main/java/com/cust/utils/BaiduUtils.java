@@ -1,4 +1,4 @@
-package com.cust.Utils;
+package com.cust.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.baidu.aip.imagecensor.AipImageCensor;

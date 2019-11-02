@@ -1,8 +1,8 @@
 package com.cust.controller;
 
-import com.cust.Entity.User;
-import com.cust.Utils.Token;
-import com.cust.Utils.WxUtils;
+import com.cust.entity.User;
+import com.cust.utils.Token;
+import com.cust.utils.WxUtils;
 import com.cust.service.UserSearchService;
 import com.cust.service.UserService;
 import org.json.simple.JSONObject;

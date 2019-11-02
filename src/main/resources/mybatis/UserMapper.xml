@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.cust.dao.UserMapper">
-    <select id="selectUser" resultType="com.cust.Entity.User">
+    <select id="selectUser" resultType="com.cust.entity.User">
          select * from user where openid=#{openid}
     </select>
 

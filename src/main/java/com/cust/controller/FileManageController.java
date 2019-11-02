@@ -1,6 +1,6 @@
 package com.cust.controller;
 
-import com.cust.Utils.BaiduUtils;
+import com.cust.utils.BaiduUtils;
 import com.cust.service.UserSearchService;
 import com.cust.service.UserService;
 import net.coobird.thumbnailator.Thumbnails;

@@ -1,6 +1,6 @@
 package com.cust.dao;
 
-import com.cust.Entity.Commentreply;
+import com.cust.entity.Commentreply;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

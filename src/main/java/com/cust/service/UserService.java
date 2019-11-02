@@ -1,6 +1,6 @@
 package com.cust.service;
 
-import com.cust.Entity.User;
+import com.cust.entity.User;
 import com.cust.dao.AllphotosMapper;
 import com.cust.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.cust.Entity;
+package com.cust.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

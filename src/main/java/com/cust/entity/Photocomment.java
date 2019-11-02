@@ -1,22 +1,23 @@
-package com.cust.Entity;
+package com.cust.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode
-public class Commentreply {
-    private Integer id;
+public class Photocomment {
+    private String id;
 
-    private String commentid;
+    private String photoId;
 
     private String fromid;
 
     private String fromname;
 
+    private String fromurl;
+
     private String content;
 
     private String createtime;
 
-    private String fromurl;
 }

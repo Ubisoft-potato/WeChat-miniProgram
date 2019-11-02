@@ -1,8 +1,8 @@
 package com.cust.controller;
 
-import com.cust.Entity.Commentreply;
-import com.cust.Entity.Photocomment;
-import com.cust.Utils.Token;
+import com.cust.entity.Commentreply;
+import com.cust.entity.Photocomment;
+import com.cust.utils.Token;
 import com.cust.service.UserCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

@@ -1,6 +1,6 @@
 package com.cust.dao;
 
-import com.cust.Entity.Photocomment;
+import com.cust.entity.Photocomment;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
