@@ -30,6 +30,7 @@ metadata:
   namespace: default
   name: commons-mysql
 spec:
+  volumeName: commoms-mysql
   accessModes:
     - ReadWriteOnce
   resources:
