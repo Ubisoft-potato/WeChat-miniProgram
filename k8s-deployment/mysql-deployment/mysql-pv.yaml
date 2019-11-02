@@ -30,11 +30,12 @@ metadata:
   namespace: default
   name: commons-mysql
 spec:
+  volumeName: default/commons-mysql
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  selector:
-    matchLabels:
-      usage: commons-mysql-5.7
+#  selector:
+#    matchLabels:
+#      usage: commons-mysql-5.7
