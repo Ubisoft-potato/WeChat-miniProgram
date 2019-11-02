@@ -28,9 +28,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: default
-  name: default/commons-mysql
+  name: commons-mysql
 spec:
-  volumeName: commons-mysql
+  volumeName: default/commons-mysql
   accessModes:
     - ReadWriteOnce
   resources:
