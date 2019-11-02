@@ -30,11 +30,8 @@ spec:
       labels:
         app: mysql
     spec:
-      tolerations:
-        - key: "node-role.kubernetes.io/master"
-          operator: "Equal"
-          value: ""
-          effect: "NoSchedule"
+      nodeSelector:
+        mysql: "true"
       containers:
         - image: mysql:5.7
           name: mysql
