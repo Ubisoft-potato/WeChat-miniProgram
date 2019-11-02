@@ -1,0 +1,38 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: dev
+  name: wechat-pic
+  labels:
+    usage: wechat-pic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: "/home/wxpicture"
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: photoshare-node
+              operator: Exists
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: dev
+  name: wechat-pic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      usage: wechat-pic

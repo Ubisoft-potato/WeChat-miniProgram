@@ -1,9 +1,9 @@
 spring:
   application:
-    name: PhotoShare-Server
+    name: PhotoShare-Service
   datasource:
     name: driud
-    url: jdbc:mysql://127.0.0.1:3307/photoshare?useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql.default:3306/photoshare?useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -27,8 +27,8 @@ spring:
       max-request-size: 30MB
       enabled: true
   redis:
-    host: 127.0.0.1
-    port: 6380 #docker redis端口
+    host: redis.default
+    port: 6379 #docker redis端口
     timeout: 180
     pool:
       max-active: 8
@@ -41,8 +41,5 @@ logging:
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
 
-
-
-
-
-
+server:
+  port: 8080

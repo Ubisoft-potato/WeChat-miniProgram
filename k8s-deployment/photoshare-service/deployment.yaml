@@ -1,0 +1,51 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: dev
+  name: photoshare
+spec:
+  selector:
+    matchLabels:
+      provider: cyka
+      app: photoshare
+  template:
+    metadata:
+      labels:
+        provider: cyka
+        app: photoshare
+    spec:
+      nodeSelector:
+        env: dev
+      containers:
+        - image: photoshare:dev
+          name: photoshare
+          env:
+            - name: ACTIVE_ENV
+              value: dev
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /home/wxpicture
+              name: wxpicture
+      volumes:
+        - name: wxpicture
+          persistentVolumeClaim:
+            claimName: wechat-pic
+---
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: dev
+  name: photoshare
+  labels:
+    provider: cyka
+    service: photoshare
+spec:
+  selector:
+    provider: cyka
+    app: photoshare
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

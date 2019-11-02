@@ -1,0 +1,64 @@
+# 服务域名 mysql.default.svc.cluster.local
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  name: mysql
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+      nodePort: 32700
+      targetPort: 3306
+  selector:
+    app: mysql
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: localtime
+              mountPath: /etc/localtime
+            - name: timezone
+              mountPath: /etc/timezone
+            - name: timezone-cnf
+              mountPath: /etc/mysql/mysql.conf.d/timezone.cnf
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: commons-mysql
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
+        - name: timezone
+          hostPath:
+            path: /etc/timezone
+        - name: timezone-cnf
+          hostPath:
+            path: /data/mysql/timezone.cnf
+

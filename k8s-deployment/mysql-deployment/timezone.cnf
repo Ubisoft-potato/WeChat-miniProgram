@@ -1,0 +1,2 @@
+[mysqld]
+default-time_zone = '+8:00'

@@ -1,0 +1,38 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: default
+  name: commoms-mysql
+  labels:
+    usage: commons-mysql-5.7
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  hostPath:
+    path: "/data/mysql/data-volume"
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: mysql-node
+              operator: Exists
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: default
+  name: commons-mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      usage: commons-mysql-5.7
