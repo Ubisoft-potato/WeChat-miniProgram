@@ -2,7 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   namespace: default
-  name: commoms-mysql
+  name: commons-mysql
   labels:
     usage: commons-mysql-5.7
 spec:
@@ -30,7 +30,7 @@ metadata:
   namespace: default
   name: commons-mysql
 spec:
-  volumeName: default/commons-mysql
+  volumeName: commons-mysql
   accessModes:
     - ReadWriteOnce
   resources:
