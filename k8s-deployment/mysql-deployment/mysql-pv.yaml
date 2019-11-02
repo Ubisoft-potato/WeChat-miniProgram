@@ -17,8 +17,10 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: mysql-node
-              operator: Exists
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - cyka   # 需要修改为发布mysql服务的node节点的hostname
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
 ---
