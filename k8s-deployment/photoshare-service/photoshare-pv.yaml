@@ -13,12 +13,15 @@ spec:
   hostPath:
     path: "/home/wxpicture"
     type: DirectoryOrCreate
+  storageClassName: wx-pic
   nodeAffinity:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: photoshare-node
-              operator: Exists
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - cyka   # 需要修改为发布mysql服务的node节点的hostname
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
 ---
@@ -30,9 +33,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: wx-pic
   resources:
     requests:
       storage: 5Gi
-  selector:
-    matchLabels:
-      usage: wechat-pic
+#  selector:
+#    matchLabels:
+#      usage: wechat-pic
