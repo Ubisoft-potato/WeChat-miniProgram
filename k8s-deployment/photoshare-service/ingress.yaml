@@ -1,0 +1,22 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  namespace: dev
+  name: photoshare-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+    - host: xqdiary.top
+      http:
+        paths:
+          - backend:
+              serviceName: photoshare
+              servicePort: 8080
+    - host: www.xqdiary.top
+      http:
+        paths:
+          - backend:
+              serviceName: photoshare
+              servicePort: 8080
