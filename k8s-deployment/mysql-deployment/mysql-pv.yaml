@@ -13,6 +13,7 @@ spec:
   hostPath:
     path: "/data/mysql/data-volume"
     type: DirectoryOrCreate
+  storageClassName: standard
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -30,9 +31,9 @@ metadata:
   namespace: default
   name: commons-mysql
 spec:
-  volumeName: default/commons-mysql
   accessModes:
     - ReadWriteOnce
+  storageClassName: standard
   resources:
     requests:
       storage: 10Gi
