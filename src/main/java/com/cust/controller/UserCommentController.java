@@ -15,6 +15,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @RestController
+@RequestMapping("/sp")
 public class UserCommentController {
 
 
