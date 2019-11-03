@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/sp/fileCtrl")
+@RequestMapping("/fileCtrl")
 public class FileManageController {
 
 
