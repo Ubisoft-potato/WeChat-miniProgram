@@ -6,6 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
+    # http 重定向到 https
     ingress.kubernetes.io/ssl-redirect: "True"
 
 spec:
