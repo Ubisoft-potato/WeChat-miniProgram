@@ -6,7 +6,14 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
+    ingress.kubernetes.io/ssl-redirect: "True"
+
 spec:
+  tls:
+    - hosts:
+        - www.xqdiary.top
+        - xqdiary.top
+      secretName: secret-tls
   rules:
     - host: xqdiary.top
       http:
