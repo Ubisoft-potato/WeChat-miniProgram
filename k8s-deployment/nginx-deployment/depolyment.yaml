@@ -1,0 +1,58 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: default
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      provider: cyka
+      app: nginx
+  template:
+    metadata:
+      labels:
+        provider: cyka
+        app: nginx
+    spec:
+      containers:
+        - image: nginx:latest
+          name: nginx
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginx-config
+            - mountPath: /etc/nginx/cert
+              name: nginx-cert
+      volumes:
+        - name: nginx-config
+          persistentVolumeClaim:
+            claimName: nginx-conf
+        - name: nginx-cert
+          persistentVolumeClaim:
+            claimName: nginx-cert
+---
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: default
+  name: nginx
+  labels:
+    provider: cyka
+    service: nginx
+spec:
+  selector:
+    provider: cyka
+    app: nginx
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 80
+    - name: https
+      port: 443
+      targetPort: 443
+      nodePort: 443

@@ -1,0 +1,85 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: default
+  name: nginx-cert
+  labels:
+    usage: nginx-cert
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: "/data/nginx/cert"
+    type: DirectoryOrCreate
+  storageClassName: nginx-cert
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - cyka   # 需要修改为发布mysql服务的node节点的hostname
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: default
+  name: nginx-conf
+  labels:
+    usage: nginx-conf
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: "/data/nginx/conf.d"
+    type: DirectoryOrCreate
+  storageClassName: nginx-conf
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - cyka   # 需要修改为发布mysql服务的node节点的hostname
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: default
+  name: nginx-cert
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nginx-cert
+  resources:
+    requests:
+      storage: 1Gi
+#  selector:
+#    matchLabels:
+#      usage: nginx-cert
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: default
+  name: nginx-conf
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nginx-conf
+  resources:
+    requests:
+      storage: 1Gi
+#  selector:
+#    matchLabels:
+#      usage: nginx-cert
