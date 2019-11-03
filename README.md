@@ -9,4 +9,5 @@
 
 ## 部署策略
 
-**docker容器化部署**
+ * docker
+ * [k3s](https://ubisoft-potato.github.io/2019/10/09/rancher%E3%80%81k3s%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/)
