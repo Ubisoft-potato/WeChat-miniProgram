@@ -13,7 +13,6 @@ spec:
   hostPath:
     path: "/home/wxpicture"
     type: DirectoryOrCreate
-  storageClassName: wx-pic
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -33,10 +32,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: wx-pic
   resources:
     requests:
       storage: 5Gi
-#  selector:
-#    matchLabels:
-#      usage: wechat-pic
+  selector:
+    matchLabels:
+      usage: wechat-pic
