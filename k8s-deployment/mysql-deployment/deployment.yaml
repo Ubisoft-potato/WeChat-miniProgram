@@ -29,8 +29,6 @@ spec:
       labels:
         app: mysql
     spec:
-      nodeSelector:
-        mysql: "true"
       containers:
         - image: mysql:5.7
           name: mysql

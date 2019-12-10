@@ -14,8 +14,6 @@ spec:
         provider: cyka
         app: photoshare
     spec:
-      nodeSelector:
-        env: dev
       containers:
         - image: photoshare:dev
           name: photoshare
